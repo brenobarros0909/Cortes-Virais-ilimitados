@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cortes Virais Ilimitados - Kirvano</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap');
+  body {
+    margin:0; background:#000; color:#fff; font-family: 'Montserrat', sans-serif;
+  }
+  .topbar {
+    background: #d32f2f;
+    padding: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    text-align: center;
+    position: relative;
+  }
+  .topbar span.timer {
+    font-family: monospace;
+    background: #000;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-left: 10px;
+  }
+  .topbar .viewers {
+    position: absolute;
+    right: 10px; top: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffeb3b;
+  }
+
+  .container {
+    max-width: 450px;
+    margin: 20px auto;
+    padding: 0 15px;
+  }
+  h1 {
+    color: #ff6f00;
+    font-size: 26px;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  h1 strong {
+    color: #00ff94;
+  }
+  h2 {
+    font-weight: 500;
+    font-size: 16px;
+    color: #ccc;
+    margin-bottom: 20px;
+  }
+  .price-box {
+    background: #111;
+    border: 2px solid #ff6f00;
+    padding: 18px;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 25px;
+  }
+  .price-box .old-price {
+    text-decoration: line-through;
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  .price-box .promo-price {
+    font-size: 32px;
+    font-weight: 700;
+    color: #00ff94;
+  }
+  .price-box .installments {
+    font-size: 14px;
+    color: #ddd;
+  }
+  .cta-button {
+    display: block;
+    background: #00ff94;
+    color: #000;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 16px;
+    border-radius: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 0 15px #00ff94;
+    transition: background 0.3s ease;
+    user-select: none;
+    margin-bottom: 30px;
+  }
+  .cta-button:hover {
+    background: #00cc78;
+  }
+  /* Arsenal Section */
+  .arsenal {
+    background: #111;
+    border: 2px solid #ff6f00;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+  }
+  .arsenal h3 {
+    color: #ff6f00;
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  .arsenal-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .arsenal-item {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+  .arsenal-item img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid #00ff94;
+  }
+  .arsenal-desc {
+    flex: 1;
+    color: #ccc;
+    font-size: 15px;
+  }
+
+  /* Passos Section */
+  .steps {
+    background: #111;
+    border: 2px solid #00ff94;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+  }
+  .steps h3 {
+    color: #00ff94;
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  .step-item {
+    margin-bottom: 12px;
+    font-weight: 600;
+    font-size: 15px;
+    color: #ddd;
+  }
+
+  /* Público-Alvo Section */
+  .audience {
+    background: #111;
+    border: 2px solid #ff6f00;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+  }
+  .audience h3 {
+    color: #ff6f00;
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  .audience-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #ccc;
+    font-size: 15px;
+  }
+  .audience-list li {
+    margin-bottom: 8px;
+  }
+
+  /* Prova Social */
+  .social-proof {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #00ff94;
+    color: #000;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 15px;
+    box-shadow: 0 0 20px #00ff94;
+    max-width: 320px;
+    text-align: center;
+    user-select: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
+  }
+  .social-proof.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Garantia Section */
+  .guarantee {
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+    margin-top: 40px;
+    margin-bottom: 30px;
+  }
+  .guarantee span {
+    color: #00ff94;
+    font-weight: 700;
+  }
+
+  /* Responsivo */
+  @media(max-width: 480px) {
+    .container {
+      max-width: 100%;
+      padding: 0 10px;
+    }
+    .arsenal-list, .audience-list {
+      font-size: 14px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  🚨 ÚLTIMAS HORAS COM 80% OFF! Preço sobe em: <span class="timer">01:15:00</span>
+  <div class="viewers">👀 73 PESSOAS VENDO AGORA!</div>
+</div>
+
+<div class="container">
+  <h1>Ganhe dinheiro com <strong>cortes virais</strong><br>que você e seus amigos passam horas assistindo – mas dessa vez, do lado <strong>CERTO</strong> da tela.</h1>
+  <h2>Transforme vídeos em renda extra no TikTok! Acesso ilimitado a cortes prontos e testados para viralizar.</h2>
+
+  <div class="price-box">
+    <div class="old-price">De R$89,90</div>
+    <div class="promo-price">Por 12x de R$0,99<br>ou R$9,90 à vista</div>
+    <div class="installments">Pagamento único! Sem mensalidades! Acesso vitalício!</div>
+  </div>
+
+  <button class="cta-button" onclick="alert('Obrigado por garantir seu acesso!')">🔥 QUERO ACESSO IMEDIATO! 🔥</button>
+
+  <section class="arsenal">
+    <h3>Arsenal do Curso</h3>
+    <div class="arsenal-list">
+      <div class="arsenal-item">
+        <img src="https://i.imgur.com/q6K1cNJ.png" alt="Cortes TikTok" />
+        <div class="arsenal-desc"><strong>Cortes TikTok</strong> — Vídeos virais prontos para postar e faturar rápido.</div>
+      </div>
+      <div class="arsenal-item">
+        <img src="https://i.imgur.com/eXVGXn9.png" alt="Cortes Funny" />
+        <div class="arsenal-desc"><strong>Cortes Funny</strong> — Conteúdo engraçado para conquistar seguidores e engajamento.</div>
+      </div>
+      <div class="arsenal-item">
+        <img src="https://i.imgur.com/RN9n1xV.png" alt="Cortes Motivacionais" />
+        <div class="arsenal-desc"><strong>Cortes Motivacionais</strong> — Vídeos que inspiram e geram conexão com seu público.</div>
+      </div>
+      <div class="arsenal-item">
+        <img src="https://i.imgur.com/H2Lj3Ri.png" alt="Cortes Exclusivos" />
+        <div class="arsenal-desc"><strong>Cortes Exclusivos</strong> — Conteúdo VIP para quem quer ir além e se destacar.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="steps">
+    <h3>Como Funciona</h3>
+    <div class="step-item">1. Clique no botão "Quero acesso imediato"</div>
+    <div class="step-item">2. Baixe os cortes virais exclusivos</div>
+    <div class="step-item">3. Poste e comece a lucrar no TikTok</div>
+  </section>
+
+  <section class="audience">
+    <h3>Pra Quem É</h3>
+    <ul class="audience-list">
+      <li>Iniciantes no digital que querem renda extra</li>
+      <li>Donos de canais de cortes e criadores de conteúdo</li>
+      <li>Quem quer aprender a viralizar rápido e fácil</li>
+      <li>Quem busca uma fonte estável de lucro com vídeos</li>
+    </ul>
+  </section>
+
+  <div class="guarantee">
+    ✅ Garantia blindada de <span>7 dias</span> ou seu dinheiro de volta!
+  </div>
+</div>
+
+<div id="socialProof" class="social-proof"></div>
+
+<script>
+  // Contador que reinicia ao recarregar
+  function startTimer(duration, display) {
+    let timer = duration, minutes, seconds;
+    function tick() {
+      minutes = parseInt(timer / 60, 10);
+      seconds = parseInt(timer % 60, 10);
+
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+
+      display.textContent = minutes + ":" + seconds;
+
+      if (--timer < 0) {
+        timer = duration;
+      }
+    }
+    tick();
+    return setInterval(tick, 1000);
+  }
+  window.onload = function () {
+    var oneHourFifteen = 60 * 75; // 1h 15min in seconds
+    var display = document.querySelector('.timer');
+    startTimer(oneHourFifteen, display);
+
+    // Prova social rotativa
+    const socialProofEl = document.getElementById('socialProof');
+    const messages = [
+      "Lucas de São Paulo acabou de comprar!",
+      "Ana P. de Recife acabou de garantir seu acesso!",
+      "Pedro H. de Brasília já começou a lucrar!",
+      "Mariana S. de Belo Horizonte está aprendendo cortes virais!",
+      "Carlos M. de Salvador garantiu acesso exclusivo!",
+      "Fernanda T. de Fortaleza já está postando cortes!",
+      "Ricardo A. de Curitiba conquistou novos seguidores!",
+      "Juliana F. de Porto Alegre recomendou o curso!",
+      "Felipe C. de Brasília está faturando alto!",
+      "Sabrina L. de Manaus já começou a viralizar!",
+      "Gabriel N. de Recife garantiu sua vaga!",
+      "Tatiana R. de São Paulo está aproveitando o curso!",
+      "Rodrigo M. de Rio de Janeiro já postou seu primeiro corte!",
+      "Bruna D. de Fortaleza está crescendo no TikTok!",
+      "Lucas S. de São Paulo comprou e já está lucrando!"
+    ];
+    let currentIndex = 0;
+
+    function showMessage() {
+      socialProofEl.classList.remove('visible');
+      setTimeout(() => {
+        socialProofEl.textContent = messages[currentIndex];
+        socialProofEl.classList.add('visible');
+        currentIndex = (currentIndex + 1) % messages.length;
+      }, 600);
+    }
+    showMessage();
+    setInterval(showMessage, 4000);
+  };
+</script>
+
+</body>
+</html>
